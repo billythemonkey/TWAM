@@ -58,15 +58,6 @@
           this.tempArr = jsonData.data
           this.items = this.tempArr
           this.lastUpdate = jsonData.dataUpdate.split("T")[1]
-        }),
-        fetch(('https://api.ipma.pt/open-data/distrits-islands.json'), {
-          method: 'get'
-        })
-        .then((response) => {
-          return response.json()
-        })
-        .then((jsonData) => {
-          this.cities = jsonData.data
         })
     },
     methods: {
