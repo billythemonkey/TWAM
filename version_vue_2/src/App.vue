@@ -30,7 +30,9 @@ export default {
     SearchBox,
     Footer
   }
+
 }
+
 </script>
 
 <style>

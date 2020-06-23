@@ -1,11 +1,11 @@
 <template>
   <div>
-    <caption class="caption">Última actualização: {{lastUpdate}}</caption>
+    <caption class="caption">Última actualização: {{hourUpdate}}</caption>
+    <label for="date-picker">Dia</label>
+    <b-form-select v-model="day" :options="options" ></b-form-select>
     <b-container fluid class="table-container">
-      <b-table striped hover @row-clicked="idToCityName" :items="items" :fields="fields" sort-icon-left></b-table>
+      <b-table striped hover @row-clicked="rowClickHandler" :items="items" :fields="fields" sort-icon-left></b-table>
     </b-container>
-    
-
   </div>
 </template>
 
@@ -43,12 +43,24 @@
         tempArr: [],
         cities: [],
         index: 0,
-        lastUpdate: '',
-        clickedRow: 0
+        hourUpdate: '',
+        dayUpdate:  '',
+        clickedRow: 0,
+        day:0,
+        options:[
+          {value:0, text:"Hoje"},
+          {value:1, text:"Amanhã"},
+          {value:2, text:"Depois de amanhã"}
+          ]
       }
     },
-    mounted: function () {
-      fetch('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day0.json', {
+    coputed:{
+      day(){
+
+      }
+    },
+    mounted: function getForecast() {
+      fetch('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day'+this.day+'.json', {
           method: 'get'
         })
         .then((response) => {
@@ -57,31 +69,27 @@
         .then((jsonData) => {
           this.tempArr = jsonData.data
           this.items = this.tempArr
-          this.lastUpdate = jsonData.dataUpdate.split("T")[1]
-        }),
-        fetch(('https://api.ipma.pt/open-data/distrits-islands.json'), {
-          method: 'get'
-        })
-        .then((response) => {
-          return response.json()
-        })
-        .then((jsonData) => {
-          this.cities = jsonData.data
-        })
+          this.hourUpdate = jsonData.dataUpdate.split("T")[1]
+          this.dayUpdate = jsonData.dataUpdate.split('T')[0]
+          console.log(this.dayUpdate);
+         })
+        //, 
+        // fetch(('https://api.ipma.pt/open-data/distrits-islands.json'), {
+        //   method: 'get'
+        // })
+        // .then((response) => {
+        //   return response.json()
+        // })
+        // .then((jsonData) => {
+        //   this.cities = jsonData.data
+        // })
     },
     methods: {
       rowClickHandler(record) {
         this.clickedRow = record.globalIdLocal
       },
-      idToCityName() {
-        var temp = 0;
-        this.tempArr.forEach(item => {
-          temp = item.globalIdLocal
-          for (let index = 0; index < this.items.length; index++) {
-            this.items[index].globalIdLocal = this.cities[index].local
-            console.log(this.items[index].globalIdLocal)
-          }
-        });
+      forecastChange(){
+        
       }
     }
   }
