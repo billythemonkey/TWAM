@@ -51,21 +51,8 @@ export default {
       arr: []
     }
   },
-  mounted: function () {
-    fetch('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day' + this.day + '.json', {
-      method: 'get'
-    })
-      .then((response) => {
-        return response.json()
-      })
-      .then((jsonData) => {
-        this.tempArr = jsonData.data
-        this.items = this.tempArr
-        this.forecastDate = jsonData.forecastDate
-        this.hourUpdate = jsonData.dataUpdate.split('T')[1]
-        this.dayUpdate = jsonData.dataUpdate.split('T')[0]
-        console.log(this.dayUpdate)
-      })
+  mounted: {
+
   }
 }
 
