@@ -1,6 +1,6 @@
 <template>
   <div class="searchBox">
-    <b-form-input id="search" :options="options" placeholder="Escolhe uma cidade"></b-form-input>
+    <b-form-input id="search" placeholder="Escolhe uma cidade"></b-form-input>
   </div>
 </template>
 

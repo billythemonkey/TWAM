@@ -1,29 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import state from './state'
+import getters from './getters'
+import mutations from './mutations'
+import actions from './actions'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    cities: []
-  },
-  mutations: {
-    getCities () {
-      fetch(('https://api.ipma.pt/open-data/distrits-islands.json'), {
-        method: 'get'
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((jsonData) => {
-          this.cities = jsonData.data.local
-        })
-
-      return this.cities
-    }
-  },
-  actions: {
-  },
-  modules: {
-  }
+  state,
+  mutations,
+  actions,
+  getters
 })

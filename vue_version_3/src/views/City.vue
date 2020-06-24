@@ -28,15 +28,7 @@ export default {
     }
   },
   mounted: function () {
-    fetch('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/' + this.city + '.json', {
-      method: 'get'
-    })
-      .then((response) => {
-        return response.json()
-      })
-      .then((jsonData) => {
-        this.data = jsonData.data
-      })
+    this.$store.dispatch('getCities')
   }
 }
 </script>
