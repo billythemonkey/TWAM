@@ -11,9 +11,6 @@ export default {
   name: 'Home',
   components: {
     DistTable
-  },
-  mounted: {
-    
   }
 }
 </script>

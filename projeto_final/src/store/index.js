@@ -13,6 +13,17 @@ export default new Vuex.Store({
     distIsles: [],
     windType: []
   },
+  getters: {
+    getPredDay0: () => {
+      return this.state.dailyPred0.data
+    },
+    getPredDay1: () => {
+      return this.state.dailyPred1.data
+    },
+    getPredDay2: () => {
+      return this.state.dailyPred2.data
+    }
+  },
   mutations: {
     SET_DAY_0: (state, forecast) => {
       state.dailyPred0 = forecast

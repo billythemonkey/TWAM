@@ -30,11 +30,11 @@ export default {
   components: {},
   mounted() {
     this.$store.dispatch("getDailyPredDay0"),
-      this.$store.dispatch("getDailyPredDay1"),
-      this.$store.dispatch("getDailyPredDay2"),
-      this.$store.dispatch("getWeatherType"),
-      this.$store.dispatch("getDistIsles"),
-      this.$store.dispatch("getWindType");
+    this.$store.dispatch("getDailyPredDay1"),
+    this.$store.dispatch("getDailyPredDay2"),
+    this.$store.dispatch("getWeatherType"),
+    this.$store.dispatch("getDistIsles"),
+    this.$store.dispatch("getWindType");
   }
 }
 </script>
