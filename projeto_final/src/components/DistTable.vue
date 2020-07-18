@@ -16,7 +16,13 @@
       :items="dailyPred0.data"
       :fields="fields"
       ref="table"
-    ></b-table>
+    >
+    <template v-slot:cell(globalIdLocal)="data">
+        <router-link :to="`/city/${data.item.globalIdLocal}`">
+            {{ data.value }}
+        </router-link>
+      </template>
+    </b-table>
   </div>
 </template>
 

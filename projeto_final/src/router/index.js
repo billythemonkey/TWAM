@@ -14,7 +14,8 @@ Vue.use(VueRouter)
   {
     path: '/city/:id',
     name: 'City',
-    component: City
+    component: City,
+    props: true
   }
 ]
 

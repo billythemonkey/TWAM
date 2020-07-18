@@ -1,5 +1,20 @@
 <template>
-  <div class="city">
-    <h1>This is an about page</h1>
+  <div>
+    <weather-info />
   </div>
 </template>
+
+
+<script>
+import WeatherInfo from '../components/WeatherInfo.vue'
+
+export default {
+  components: {
+    WeatherInfo
+  }
+}
+</script>
+
+<style>
+
+</style>
