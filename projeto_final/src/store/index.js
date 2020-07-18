@@ -11,7 +11,8 @@ export default new Vuex.Store({
     dailyPred2: [],
     weatherType: [],
     distIsles: [],
-    windType: []
+    windType: [],
+    cityPred: []
   },
   getters: {
     getPredDay0: () => {
@@ -42,7 +43,11 @@ export default new Vuex.Store({
     },
     SET_WIND_TYPE: (state, data) =>{
       state.windType = data
-    }
+    },
+    SET_CITY_PRED: (state, data) =>{
+      state.cityPred = data
+    },
+
   },
   actions: {
     getDailyPredDay0: ({commit}) =>{
@@ -79,6 +84,12 @@ export default new Vuex.Store({
       axios.get('https://api.ipma.pt/open-data/wind-speed-daily-classe.json')
       .then(response => {
         commit('SET_WIND_TYPE', response.data)
+      })
+    },
+    getCityPred: ({commit}, cityId) =>{
+      axios.get('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/'+ cityId +'.json')
+      .then(response => {
+        commit('SET_CITY_PRED', response.data)
       })
     }
   },
