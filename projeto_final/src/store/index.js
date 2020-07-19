@@ -12,7 +12,14 @@ export default new Vuex.Store({
     weatherType: [],
     distIsles: [],
     windType: [],
-    cityPred: []
+    cityPred: [],
+    appInfo: {
+      author: 'Andrei Oproiu',
+      projectName: 'Estação Metereológica do IPBeja',
+      contact: '15776@stu.ipbeja.pt',
+      info: 'Projeto desenvolvido no âmbito da cadeira de Tecnologias para a Web e Ambientes Móveis utilizando a framework Vue.js',
+      refAPI: 'https://api.ipma.pt/'
+    }
   },
   getters: {
     getPredDay0: () => {

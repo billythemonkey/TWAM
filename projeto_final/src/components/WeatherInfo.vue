@@ -3,11 +3,11 @@
   <div>
     <!-- <p>{{ cityId }}</p> -->
     <!-- <h1>{{translatedName(cityId)}}</h1> -->
-    <b-card img-left tag="article" style="max-width: 30rem;" class="mb-2">
+    <b-card style="max-width: 30rem;" class="mb-2">
       <b-card-text>
         <div class="row">
           <div class="col-sm-6">
-            <img src="../assets/weather-icons-master/svg/wi-windy.svg" alt="sdasd">
+            <b-img ref="weatherIcons" :src="getImage(cityPred.data[0].classWindSpeed)" width="200"></b-img>
           </div>
           <div class="col-sm-8">
             
@@ -34,7 +34,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      weather: "sdsd"
+      
     };
   },
   props: ["cityId"],
@@ -72,7 +72,101 @@ export default {
       }
 
       return weatherId + "- Unknown";
-    }
+    },
+    getImage(weatherId) {
+        let image = ''
+        switch (weatherId) {
+          case -99:
+            return 'https://image.flaticon.com/icons/svg/929/929599.svg'
+            break
+          case 0:
+            return 'https://image.flaticon.com/icons/svg/929/929599.svg'
+            break
+          case 1:
+            return 'https://image.flaticon.com/icons/svg/3093/3093273.svg' 
+            break;
+          case 2:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093290.svg' 
+            break;
+          case 3:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093290.svg' 
+            break;
+          case 4:
+            return 'https://image.flaticon.com/icons/svg/3093/3093275.svg' 
+            break;
+          case 5:
+            return 'https://image.flaticon.com/icons/svg/3093/3093275.svg' 
+            break;
+          case 6:
+            return 'https://image.flaticon.com/icons/svg/3093/3093276.svg' 
+            break;
+          case 7:
+            return 'https://image.flaticon.com/icons/svg/3093/3093276.svg' 
+            break;
+          case 8:
+            return 'https://image.flaticon.com/icons/svg/3093/3093276.svg' 
+            break;
+          case 9:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093288.svg' 
+            break;
+          case 10:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093288.svg' 
+            break;
+          case 11:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093288.svg' 
+            break;
+          case 12:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093288.svg' 
+            break;
+          case 13:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093288.svg' 
+            break;
+          case 14:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093288.svg' 
+            break;
+          case 15:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093288.svg' 
+            break;
+          case 16:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093296.svg' 
+            break;
+          case 17:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093296.svg' 
+            break;
+          case 18:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093299.svg' 
+            break;
+          case 19:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093292.svg' 
+            break;
+          case 20:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093328.svg' 
+            break;
+          case 21:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093301.svg' 
+            break;
+          case 22:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093324.svg' 
+            break;
+          case 23:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093328.svg' 
+            break;
+          case 24:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093401.svg' 
+            break;
+          case 25:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093290.svg' 
+            break;
+          case 26:
+            return 'https://www.flaticon.com/premium-icon/icons/svg/3093/3093401.svg' 
+            break;
+          case 27:
+            return 'https://image.flaticon.com/icons/svg/3093/3093275.svg' 
+            break;
+          default:
+            break;
+        }
+      }
   }
 };
 </script>

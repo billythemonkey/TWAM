@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-button-group>
-      <b-button v-on:click="setData(0)">{{dailyPred0.forecastDate}}</b-button>
-      <b-button v-on:click="setData(1)">{{dailyPred1.forecastDate}}</b-button>
-      <b-button v-on:click="setData(2)">{{dailyPred2.forecastDate}}</b-button>
+      <b-button style="margin:10px" v-on:click="setData(0)">{{dailyPred0.forecastDate}}</b-button>
+      <b-button style="margin:10px" v-on:click="setData(1)">{{dailyPred1.forecastDate}}</b-button>
+      <b-button style="margin:10px" v-on:click="setData(2)">{{dailyPred2.forecastDate}}</b-button>
     </b-button-group>
     <b-table
       id="table"
@@ -17,10 +17,8 @@
       :fields="fields"
       ref="table"
     >
-    <template v-slot:cell(globalIdLocal)="data">
-        <router-link :to="`/city/${data.item.globalIdLocal}`">
-            {{ data.value }}
-        </router-link>
+      <template v-slot:cell(globalIdLocal)="data">
+        <router-link :to="`/city/${data.item.globalIdLocal}`">{{ data.value }}</router-link>
       </template>
     </b-table>
   </div>
@@ -37,7 +35,8 @@ export default {
           key: "globalIdLocal",
           label: "Cidade",
           sortable: true,
-          formatter: "translatedName"
+          formatter: "translatedName",
+          variant: 'dark'
         },
         {
           key: "tMin",
@@ -68,7 +67,6 @@ export default {
   },
   methods: {
     translatedName(globalIdLocal) {
-      //let cities = this.$store.getters.getDistIsle
       for (let i = 0; i < this.distIsles.data.length; i++) {
         if (globalIdLocal == this.distIsles.data[i].globalIdLocal) {
           return this.distIsles.data[i].local;
@@ -80,17 +78,17 @@ export default {
     setData(day) {
       switch (day) {
         case 0:
-          this.$refs.table.items = this.$store.state['dailyPred0'].data
+          this.$refs.table.items = this.$store.state["dailyPred0"].data;
           break;
         case 1:
-          this.$refs.table.items = this.$store.state['dailyPred1'].data
-          break
+          this.$refs.table.items = this.$store.state["dailyPred1"].data;
+          break;
         case 2:
-          this.$refs.table.items = this.$store.state['dailyPred2'].data
-          break
+          this.$refs.table.items = this.$store.state["dailyPred2"].data;
+          break;
         default:
           break;
-      }      
+      }
     }
   }
 };
