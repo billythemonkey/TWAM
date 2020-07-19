@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
+import Vue from "vue";
+import Vuex from "vuex";
+import axios from "axios";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -13,93 +13,124 @@ export default new Vuex.Store({
     distIsles: [],
     windType: [],
     cityPred: [],
+    cityPred1: [],
     appInfo: {
-      author: 'Andrei Oproiu',
-      projectName: 'Estação Metereológica do IPBeja',
-      contact: '15776@stu.ipbeja.pt',
-      info: 'Projeto desenvolvido no âmbito da cadeira de Tecnologias para a Web e Ambientes Móveis utilizando a framework Vue.js',
-      refAPI: 'https://api.ipma.pt/'
-    }
+      author: "Andrei Oproiu",
+      projectName: "Estação Metereológica do IPBeja",
+      contact: "15776@stu.ipbeja.pt",
+      info:
+        "Projeto desenvolvido no âmbito da cadeira de Tecnologias para a Web e Ambientes Móveis utilizando a framework Vue.js",
+      refAPI: "https://api.ipma.pt/",
+    },
   },
   getters: {
     getPredDay0: () => {
-      return this.state.dailyPred0.data
+      return this.state.dailyPred0.data;
     },
     getPredDay1: () => {
-      return this.state.dailyPred1.data
+      return this.state.dailyPred1.data;
     },
     getPredDay2: () => {
-      return this.state.dailyPred2.data
-    }
+      return this.state.dailyPred2.data;
+    },
   },
   mutations: {
     SET_DAY_0: (state, forecast) => {
-      state.dailyPred0 = forecast
+      state.dailyPred0 = forecast;
     },
     SET_DAY_1: (state, forecast) => {
-      state.dailyPred1 = forecast
+      state.dailyPred1 = forecast;
     },
     SET_DAY_2: (state, forecast) => {
-      state.dailyPred2 = forecast
+      state.dailyPred2 = forecast;
     },
-    SET_WEATHER_TYPE: (state, data) =>{
-      state.weatherType = data
+    SET_WEATHER_TYPE: (state, data) => {
+      state.weatherType = data;
     },
-    SET_DIST_ISLES: (state, data) =>{
-      state.distIsles = data
+    SET_DIST_ISLES: (state, data) => {
+      state.distIsles = data;
     },
-    SET_WIND_TYPE: (state, data) =>{
-      state.windType = data
+    SET_WIND_TYPE: (state, data) => {
+      state.windType = data;
     },
-    SET_CITY_PRED: (state, data) =>{
-      state.cityPred = data
+    SET_CITY_PRED: (state, data) => {
+      state.cityPred = data;
     },
-
+    SET_CITY_PRED1: (state, data) => {
+      state.cityPred1 = data;
+    },
   },
   actions: {
-    getDailyPredDay0: ({commit}) =>{
-      axios.get('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day0.json')
-      .then(response => {
-        commit('SET_DAY_0', response.data)
-      })
+    getDailyPredDay0: ({ commit }) => {
+      axios
+        .get(
+          "http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day0.json"
+        )
+        .then((response) => {
+          commit("SET_DAY_0", response.data);
+        });
     },
-    getDailyPredDay1: ({commit}) =>{
-      axios.get('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day1.json')
-      .then(response => {
-        commit('SET_DAY_1', response.data)
-      })
+    getDailyPredDay1: ({ commit }) => {
+      axios
+        .get(
+          "http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day1.json"
+        )
+        .then((response) => {
+          commit("SET_DAY_1", response.data);
+        });
     },
-    getDailyPredDay2: ({commit}) =>{
-      axios.get('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day2.json')
-      .then(response => {
-        commit('SET_DAY_2', response.data)
-      })
+    getDailyPredDay2: ({ commit }) => {
+      axios
+        .get(
+          "http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day2.json"
+        )
+        .then((response) => {
+          commit("SET_DAY_2", response.data);
+        });
     },
-    getWeatherType: ({commit}) =>{
-      axios.get('https://api.ipma.pt/open-data/weather-type-classe.json')
-      .then(response => {
-        commit('SET_WEATHER_TYPE', response.data)
-      })
+    getWeatherType: ({ commit }) => {
+      axios
+        .get("https://api.ipma.pt/open-data/weather-type-classe.json")
+        .then((response) => {
+          commit("SET_WEATHER_TYPE", response.data);
+        });
     },
-    getDistIsles: ({commit}) =>{
-      axios.get('https://api.ipma.pt/open-data/distrits-islands.json')
-      .then(response => {
-        commit('SET_DIST_ISLES', response.data)
-      })
+    getDistIsles: ({ commit }) => {
+      axios
+        .get("https://api.ipma.pt/open-data/distrits-islands.json")
+        .then((response) => {
+          commit("SET_DIST_ISLES", response.data);
+        });
     },
-    getWindType: ({commit}) =>{
-      axios.get('https://api.ipma.pt/open-data/wind-speed-daily-classe.json')
-      .then(response => {
-        commit('SET_WIND_TYPE', response.data)
-      })
+    getWindType: ({ commit }) => {
+      axios
+        .get("https://api.ipma.pt/open-data/wind-speed-daily-classe.json")
+        .then((response) => {
+          commit("SET_WIND_TYPE", response.data);
+        });
     },
-    getCityPred: ({commit}, cityId) =>{
-      axios.get('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/'+ cityId +'.json')
-      .then(response => {
-        commit('SET_CITY_PRED', response.data)
-      })
-    }
+    getCityPred: ({ commit }, cityId) => {
+      axios
+        .get(
+          "http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/" +
+            cityId +
+            ".json"
+        )
+        .then((response) => {
+          commit("SET_CITY_PRED", response.data);
+        });
+    },
+    getCityPred1: ({ commit }, cityId) => {
+      axios
+        .get(
+          "http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/" +
+            cityId +
+            ".json"
+        )
+        .then((response) => {
+          commit("SET_CITY_PRED1", response.data);
+        });
+    },
   },
-  modules: {
-  }
-})
+  modules: {},
+});

@@ -4,19 +4,24 @@
     <!-- <p>{{ cityId }}</p> -->
     <!-- <h1>{{translatedName(cityId)}}</h1> -->
     <b-card style="max-width: 30rem;" class="mb-2">
+      <b-button
+        v-on:click="changeDate(pred)"
+        v-for="pred in cityPred.data"
+        :key="pred.globalIdLocal"
+        >{{ pred.forecastDate }}</b-button>
       <b-card-text>
         <div class="row">
-          <div class="col-sm-6">
-            <b-img ref="weatherIcons" :src="getImage(cityPred.data[0].classWindSpeed)" width="200"></b-img>
+          <div class="col-sm-12">
+            <b-img ref="weatherIcons" :src="getImage(cityPred.data[day].classWindSpeed)" width="200"></b-img>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-12">
             
             <h1>{{translatedName(cityId)}}</h1>
-            <h4>{{translatedWeather(cityPred.data[0].classWindSpeed)}}</h4>
-            <h4>Max: {{cityPred.data[0].tMax}} ºC</h4>
-            <h4>Min: {{cityPred.data[0].tMin}} ºC</h4>
-            <h4>Precipitação: {{cityPred.data[0].precipitaProb}} %</h4>
-            <h4>Vento: {{translatedWind(cityPred.data[0].idWeatherType)}}</h4>
+            <h4>{{translatedWeather(cityPred.data[day].classWindSpeed)}}</h4>
+            <h4>Max: {{cityPred.data[day].tMax}} ºC</h4>
+            <h4>Min: {{cityPred.data[day].tMin}} ºC</h4>
+            <h4>Precipitação: {{cityPred.data[day].precipitaProb}} %</h4>
+            <h4>Vento: {{translatedWind(cityPred.data[day].idWeatherType)}}</h4>
             <small
               class="text-muted"
             >Última actualização: {{cityPred.dataUpdate.split('T')[1]}} de {{cityPred.dataUpdate.split('T')[0]}}</small>
@@ -34,10 +39,12 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      
+      day: 0
     };
   },
-  props: ["cityId"],
+  props: [
+    "cityId"
+  ],
   mounted() {
     this.$store.dispatch("getCityPred", this.cityId);
   },
@@ -72,6 +79,14 @@ export default {
       }
 
       return weatherId + "- Unknown";
+    },
+    changeDate(id) {
+      for (let i = 0; i < this.cityPred.data.length; i++) {
+        
+        if (id == this.cityPred.data[i]) {
+          return this.day = i
+        }
+      }
     },
     getImage(weatherId) {
         let image = ''
@@ -170,6 +185,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>

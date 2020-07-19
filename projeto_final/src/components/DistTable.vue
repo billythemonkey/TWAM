@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-button-group>
-      <b-button style="margin:10px" v-on:click="setData(0)">{{dailyPred0.forecastDate}}</b-button>
-      <b-button style="margin:10px" v-on:click="setData(1)">{{dailyPred1.forecastDate}}</b-button>
-      <b-button style="margin:10px" v-on:click="setData(2)">{{dailyPred2.forecastDate}}</b-button>
+      <b-button v-on:click="setData(0)">{{dailyPred0.forecastDate}}</b-button>
+      <b-button v-on:click="setData(1)">{{dailyPred1.forecastDate}}</b-button>
+      <b-button v-on:click="setData(2)">{{dailyPred2.forecastDate}}</b-button>
     </b-button-group>
     <b-table
       id="table"
@@ -93,6 +93,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>

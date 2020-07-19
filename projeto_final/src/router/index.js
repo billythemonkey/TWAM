@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import City from '../views/City.vue'
+import CityCompare from '../views/CityCompare.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,12 @@ Vue.use(VueRouter)
     path: '/city/:id',
     name: 'City',
     component: City,
+    props: true
+  },
+  {
+    path: '/citycompare/:id1/:id2',
+    name: 'CityCompare',
+    component: CityCompare,
     props: true
   }
 ]

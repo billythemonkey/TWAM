@@ -1,4 +1,0 @@
-<b-form-input list="myList" placeholder="Ex: Beja" v-if="!isHidden"></b-form-input>
-    <b-datalist v-if="!isHidden" v-model="selected" id="myList">
-      <option v-for="dist in distIsles.data" v-bind:key="dist.globalIdLocal">{{ dist.local }}</option>
-    </b-datalist>
