@@ -23,9 +23,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      id: {
-        cityId: this.$route.params.id
-      },
+      
       isHidden: true
     };
   },
