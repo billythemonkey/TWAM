@@ -7,8 +7,7 @@
         v-on:click="changeDate(pred)"
         v-for="pred in cityPred1.data"
         :key="pred.globalIdLocal"
-        >{{ pred.forecastDate }}</b-button
-      >
+        >{{ pred.forecastDate }}</b-button>
       <b-card-text>
         <div class="row">
           <div class="col-sm-12">
